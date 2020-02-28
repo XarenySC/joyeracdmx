@@ -3,6 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/container";
 import Navbar from "./components/Navbar";
 import Catalogo from "./components/Catalogo";
+import Footer from "./components/Footer";
 
 const useStyles = makeStyles(theme => ({
 	main: {
@@ -34,6 +35,7 @@ function App() {
 				</div>
 				<Catalogo />
 			</Container>
+			<Footer/>
 		</div>
 	);
 }

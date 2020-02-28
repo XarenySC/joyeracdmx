@@ -37,7 +37,7 @@ export default function Catalogo() {
 			<Grid container spacing={3}>
 				{dummy.map(item => {
 					return (
-						<Grid item xs={12} sm={4}>
+						<Grid item xs={12} sm={4} key={item.nombre}>
 							<Tarjeta nombre={item.nombre} precio={item.precio} />
 						</Grid>
 					);

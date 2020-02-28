@@ -12,8 +12,7 @@ import modelo from "../img/modelo.png";
 
 const useStyles = makeStyles(theme => ({
 	media: {
-		height: "223.5px",
-		backgroundSize: "contain"
+		height: "223.5px"
 	},
 	center: {
 		textAlign: "center"
