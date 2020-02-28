@@ -143,7 +143,7 @@ export default function PrimarySearchAppBar() {
 
 	return (
 		<div className={classes.grow}>
-			<AppBar color="white" position="static">
+			<AppBar color="white" position="fixed">
 				<Toolbar>
 					<div className={`${classes.menuSection} ${classes.sectionDesktop}`}>
 						<Button>TIENDA</Button>
