@@ -183,9 +183,6 @@ export default function PrimarySearchAppBar() {
 						</IconButton>
 						<IconButton
 							aria-label="Carrito"
-							aria-controls={menuId}
-							aria-haspopup="true"
-							onClick={handleProfileMenuOpen}
 							color="inherit"
 						>
 							<ShoppingCart />

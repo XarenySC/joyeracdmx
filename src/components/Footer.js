@@ -13,13 +13,16 @@ const useStyles = makeStyles(theme => ({
 	subMenu: {
 		justifyContent: "space-evenly",
 		backgroundColor: "#2B2B2B",
-		[theme.breakpoints.down("md")]: {
-			display: "none"
+		[theme.breakpoints.down("sm")]: {
+			flexWrap: "wrap"
 		}
 	},
 	menuItem: {
 		color: "#FFF",
-		fontWeight: "bold"
+		fontWeight: "bold",
+		[theme.breakpoints.down("sm")]: {
+			width: "100%"
+		}
 	},
 	copyright: {
 		backgroundColor: "#986D0B",
