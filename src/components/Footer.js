@@ -1,11 +1,11 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles(theme => ({
 	root: {
-		display: "flex",
-		flexGrow: 1
+		display: "flex"
 	},
 	footer: {
 		flexDirection: "column"
@@ -18,11 +18,14 @@ const useStyles = makeStyles(theme => ({
 		}
 	},
 	menuItem: {
-		color: "#FFF",
-		fontWeight: "bold",
 		[theme.breakpoints.down("sm")]: {
 			width: "100%"
-		}
+		},
+	},
+	link: {
+		color: "#FFF",
+		fontWeight: "bold",
+		textDecoration: "none"
 	},
 	copyright: {
 		backgroundColor: "#986D0B",
@@ -40,12 +43,36 @@ export default function Footer() {
 	return (
 		<div className={`${classes.root} ${classes.footer}`}>
 			<div className={`${classes.root} ${classes.subMenu}`}>
-				<Button className={classes.menuItem}>TIENDA</Button>
-				<Button className={classes.menuItem}>QUIENES SOMOS</Button>
-				<Button className={classes.menuItem}>FAQ</Button>
-				<Button className={classes.menuItem}>CONTACTO</Button>
-				<Button className={classes.menuItem}>ENVIOS Y DEVOLUCIONES</Button>
-				<Button className={classes.menuItem}>POLITICAS</Button>
+				<Button className={classes.menuItem}>
+					<Link className={classes.link} to="/catalogo">
+						TIENDA
+					</Link>
+				</Button>
+				<Button className={classes.menuItem}>
+					<Link className={classes.link} to="/quienes_somos">
+						QUIENES SOMOS
+					</Link>
+				</Button>
+				<Button className={classes.menuItem}>
+					<Link className={classes.link} to="/faq">
+						FAQ
+					</Link>
+				</Button>
+				<Button className={classes.menuItem}>
+					<Link className={classes.link} to="/contacto">
+						CONTACTO
+					</Link>
+				</Button>
+				<Button className={classes.menuItem}>
+					<Link className={classes.link} to="/envios">
+						ENVIOS Y DEVOLUCIONES
+					</Link>
+				</Button>
+				<Button className={classes.menuItem}>
+					<Link className={classes.link} to="/politicas">
+						POLITICAS
+					</Link>
+				</Button>
 			</div>
 			<div className={`${classes.root} ${classes.copyright}`}>
 				<h6

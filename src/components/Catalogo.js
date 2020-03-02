@@ -10,6 +10,15 @@ const useStyles = makeStyles(theme => ({
 	},
 	media: {
 		height: 140
+	},
+	header: {
+		marginTop: 0,
+		display: "inline-block",
+		borderBottom: "1px black solid",
+		padding: "0 .5rem .25rem .5rem"
+	},
+	center: {
+		textAlign: "center"
 	}
 }));
 
@@ -31,6 +40,9 @@ export default function Catalogo() {
 
 	return (
 		<div className={classes.root}>
+			<div className={classes.center}>
+				<h2 className={classes.header}>CATALOGO</h2>
+			</div>
 			<Grid container spacing={3}>
 				{dummy.map(item => {
 					return (

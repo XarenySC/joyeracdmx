@@ -19,6 +19,7 @@ import Instagram from "@material-ui/icons/Instagram";
 
 //Imagenes
 import logo from "../img/logojoyera.png";
+import { Link as LinkTo } from "react-router-dom";
 
 const useStyles = makeStyles(theme => ({
 	grow: {
@@ -29,18 +30,19 @@ const useStyles = makeStyles(theme => ({
 	},
 	center: {
 		display: "flex",
-		justifyContent: "center"
+		justifyContent: "center",
+		alignItems:"center"
 	},
-	header:{
+	header: {
 		//padding: theme.spacing(1)
 		margin: theme.spacing(1)
 	},
-	headerContainer:{
+	headerContainer: {
 		backgroundColor: "#2B2B2B",
 		color: "#FFF"
 	},
 	logo: {
-		width: "25%"
+		width: "40%"
 	},
 	menuSection: {
 		width: "30%",
@@ -59,6 +61,9 @@ const useStyles = makeStyles(theme => ({
 		[theme.breakpoints.up("md")]: {
 			display: "none"
 		}
+	},
+	textCenter:{
+		textAlign: "center"
 	}
 }));
 
@@ -150,7 +155,7 @@ export default function PrimarySearchAppBar() {
 	);
 
 	return (
-		<div className={classes.grow}>
+		<div>
 			<AppBar color="white" position="fixed">
 				<div className={`${classes.headerContainer} ${classes.center}`}>
 					<h6 className={classes.header}>ENVIO GRATIS COMPRANDO $1600 O MÁS</h6>
@@ -163,7 +168,9 @@ export default function PrimarySearchAppBar() {
 						<Button>CONTACTO</Button>
 					</div>
 					<div className={`${classes.grow} ${classes.center}`}>
-						<img src={logo} alt="logo" className={classes.logo} />
+						<LinkTo to="/" className={`${classes.textCenter} ${classes.center}`}>
+							<img src={logo} alt="logo" className={classes.logo} />
+						</LinkTo>
 					</div>
 					<div className={`${classes.menuSection} ${classes.sectionDesktop}`}>
 						<IconButton
