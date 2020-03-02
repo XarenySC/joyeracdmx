@@ -31,6 +31,14 @@ const useStyles = makeStyles(theme => ({
 		display: "flex",
 		justifyContent: "center"
 	},
+	header:{
+		//padding: theme.spacing(1)
+		margin: theme.spacing(1)
+	},
+	headerContainer:{
+		backgroundColor: "#2B2B2B",
+		color: "#FFF"
+	},
 	logo: {
 		width: "25%"
 	},
@@ -144,6 +152,9 @@ export default function PrimarySearchAppBar() {
 	return (
 		<div className={classes.grow}>
 			<AppBar color="white" position="fixed">
+				<div className={`${classes.headerContainer} ${classes.center}`}>
+					<h6 className={classes.header}>ENVIO GRATIS COMPRANDO $1600 O MÁS</h6>
+				</div>
 				<Toolbar>
 					<div className={`${classes.menuSection} ${classes.sectionDesktop}`}>
 						<Button>TIENDA</Button>
@@ -181,10 +192,7 @@ export default function PrimarySearchAppBar() {
 								<Instagram />
 							</Link>
 						</IconButton>
-						<IconButton
-							aria-label="Carrito"
-							color="inherit"
-						>
+						<IconButton aria-label="Carrito" color="inherit">
 							<ShoppingCart />
 						</IconButton>
 					</div>
