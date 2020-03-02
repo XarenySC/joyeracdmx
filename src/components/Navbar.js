@@ -31,7 +31,7 @@ const useStyles = makeStyles(theme => ({
 	center: {
 		display: "flex",
 		justifyContent: "center",
-		alignItems:"center"
+		alignItems: "center"
 	},
 	header: {
 		//padding: theme.spacing(1)
@@ -62,8 +62,12 @@ const useStyles = makeStyles(theme => ({
 			display: "none"
 		}
 	},
-	textCenter:{
+	textCenter: {
 		textAlign: "center"
+	},
+	link: {
+		color: "#212121",
+		textDecoration: "none"
 	}
 }));
 
@@ -162,13 +166,24 @@ export default function PrimarySearchAppBar() {
 				</div>
 				<Toolbar>
 					<div className={`${classes.menuSection} ${classes.sectionDesktop}`}>
-						<Button>TIENDA</Button>
-						<Button>QUIENES SOMOS</Button>
-						<Button>FAQ</Button>
-						<Button>CONTACTO</Button>
+						<Button>
+							<LinkTo className={classes.link} to="/catalogo">TIENDA</LinkTo>
+						</Button>
+						<Button>
+							<LinkTo className={classes.link} to="/quienes_somos">QUIENES SOMOS</LinkTo>
+						</Button>
+						<Button>
+							<LinkTo className={classes.link} to="/faq">FAQ</LinkTo>
+						</Button>
+						<Button>
+							<LinkTo className={classes.link} to="/contacto">CONTACTO</LinkTo>
+						</Button>
 					</div>
 					<div className={`${classes.grow} ${classes.center}`}>
-						<LinkTo to="/" className={`${classes.textCenter} ${classes.center}`}>
+						<LinkTo
+							to="/"
+							className={`${classes.textCenter} ${classes.center}`}
+						>
 							<img src={logo} alt="logo" className={classes.logo} />
 						</LinkTo>
 					</div>
