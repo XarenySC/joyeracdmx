@@ -3,6 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/container";
 import Navbar from "./components/Navbar";
 import Catalogo from "./components/Catalogo";
+import Quienes from "./components/Quienes";
 import Footer from "./components/Footer";
 import { HashRouter as Router, Switch, Route } from "react-router-dom";
 
@@ -19,7 +20,6 @@ function App() {
 		
 			<Router>
 				<Navbar />
-				
 					<Container className={`${classes.root} ${classes.main}`}>
 						<Navbar />
 						<Switch>
@@ -32,8 +32,6 @@ function App() {
 							<Route path="/politicas" component={Politicas} />
 						</Switch>
 					</Container>
-					
-				
 				<Footer />
 			</Router>
 		
@@ -42,10 +40,6 @@ function App() {
 
 function Index() {
 	return <h2>Index</h2>;
-}
-
-function Quienes() {
-	return <h2>Quienes somos</h2>;
 }
 
 function FAQ() {
