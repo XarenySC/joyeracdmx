@@ -4,13 +4,15 @@ import Container from "@material-ui/core/container";
 import Navbar from "./components/Navbar";
 import Catalogo from "./components/Catalogo";
 import Quienes from "./components/Quienes";
+import Contacto from "./components/Contacto";
 import Footer from "./components/Footer";
 import { HashRouter as Router, Switch, Route } from "react-router-dom";
 
 const useStyles = makeStyles(theme => ({
 	root: {
 		flexGrow: 1,
-		paddingTop: "7rem"
+		paddingTop: "7rem",
+		display: "flex"
 	}
 }));
 
@@ -20,7 +22,7 @@ function App() {
 		
 			<Router>
 				<Navbar />
-					<Container className={`${classes.root} ${classes.main}`}>
+					<Container className={classes.root}>
 						<Navbar />
 						<Switch>
 							<Route path="/" exact component={Index} />
@@ -44,10 +46,6 @@ function Index() {
 
 function FAQ() {
 	return <h2>FAQ</h2>;
-}
-
-function Contacto() {
-	return <h2>Contacto</h2>;
 }
 
 function Envios() {
