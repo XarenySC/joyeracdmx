@@ -34,7 +34,7 @@ const useStyle = makeStyles(theme => ({
 		textAlign: "justify",
 		padding: theme.spacing(2)
 	},
-	noDeco:{
+	noDeco: {
 		listStyle: "none"
 	}
 }));

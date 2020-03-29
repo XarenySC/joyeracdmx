@@ -7,6 +7,7 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import ArrowRightAlt from "@material-ui/icons/ArrowRightAlt";
+import { Link } from "react-router-dom";
 
 import modelo from "../img/modelo.png";
 
@@ -22,7 +23,7 @@ const useStyles = makeStyles(theme => ({
 		justifyContent: "center",
 		paddingTop: 0
 	},
-	detalles:{
+	detalles: {
 		color: "#986d0b"
 	}
 }));
@@ -41,10 +42,12 @@ export default function Tarjeta(props) {
 				<Typography>{`$${props.precio} MXN`}</Typography>
 			</CardContent>
 			<CardActions className={classes.centerAction}>
-				<Button size="small" className={classes.detalles}>
-					Más detalles
-					<ArrowRightAlt/>
-				</Button>
+				<Link to={`/catalogo/${props.id}`}>
+					<Button size="small" className={classes.detalles}>
+						Más detalles
+						<ArrowRightAlt />
+					</Button>
+				</Link>
 			</CardActions>
 		</Card>
 	);

@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Tarjeta from "./Tarjeta";
+import Spinner from "./Spinner";
+import { getAllEntries } from "../utils/ContentfulApi";
 
 const useStyles = makeStyles(theme => ({
 	root: {
@@ -22,36 +24,41 @@ const useStyles = makeStyles(theme => ({
 	}
 }));
 
-const dummy = [
-	{ nombre: "Aretes Madonna 1", precio: 1200.0 },
-	{ nombre: "Aretes Madonna 2", precio: 1300.0 },
-	{ nombre: "Aretes Madonna 3", precio: 1400.0 },
-	{ nombre: "Aretes Madonna 4", precio: 1500.0 },
-	{ nombre: "Aretes Madonna 5", precio: 1600.0 },
-	{ nombre: "Aretes Madonna 6", precio: 1700.0 },
-	{ nombre: "Aretes Madonna 7", precio: 1800.0 },
-	{ nombre: "Aretes Madonna 8", precio: 1900.0 },
-	{ nombre: "Aretes Madonna 9", precio: 2000.0 },
-	{ nombre: "Aretes Madonna 10", precio: 2100.0 }
-];
-
 export default function Catalogo() {
 	const classes = useStyles();
+	const [catalogoData, setCatalogo] = useState({
+		productos: [],
+		loading: true
+	});
+
+	useEffect(() => {
+		getAllEntries().then(entries => {
+			setCatalogo({ productos: entries, loading: false });
+		});
+	}, []);
 
 	return (
 		<div className={classes.root}>
 			<div className={classes.center}>
 				<h2 className={classes.header}>CATALOGO</h2>
 			</div>
-			<Grid container spacing={3}>
-				{dummy.map(item => {
-					return (
-						<Grid item xs={12} sm={4} key={item.nombre}>
-							<Tarjeta nombre={item.nombre} precio={item.precio} />
-						</Grid>
-					);
-				})}
-			</Grid>
+			{catalogoData.loading ? (
+				<Spinner />
+			) : (
+				<Grid container spacing={3}>
+					{catalogoData.productos.map(item => {
+						return (
+							<Grid item xs={12} sm={4} key={item.sys.id}>
+								<Tarjeta
+									id={item.sys.id}
+									nombre={item.fields.nombre}
+									precio={item.fields.precio}
+								/>
+							</Grid>
+						);
+					})}
+				</Grid>
+			)}
 		</div>
 	);
 }
