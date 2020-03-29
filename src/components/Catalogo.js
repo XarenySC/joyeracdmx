@@ -53,6 +53,7 @@ export default function Catalogo() {
 									id={item.sys.id}
 									nombre={item.fields.nombre}
 									precio={item.fields.precio}
+									imagen={item.fields.imagen.fields.file.url}
 								/>
 							</Grid>
 						);

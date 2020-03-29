@@ -9,8 +9,6 @@ import Typography from "@material-ui/core/Typography";
 import ArrowRightAlt from "@material-ui/icons/ArrowRightAlt";
 import { Link } from "react-router-dom";
 
-import modelo from "../img/modelo.png";
-
 const useStyles = makeStyles(theme => ({
 	media: {
 		height: "223.5px"
@@ -34,7 +32,7 @@ export default function Tarjeta(props) {
 		<Card>
 			<CardMedia
 				className={classes.media}
-				image={modelo}
+				image={props.imagen}
 				title={props.nombre}
 			/>
 			<CardContent className={classes.center}>
