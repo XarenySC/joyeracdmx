@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 //import Grid from "@material-ui/core/Grid";
-import { useParams } from "react-router-dom";
 import { getProductoById } from "../utils/ContentfulApi";
 import Spinner from "./Spinner";
 
@@ -24,17 +23,15 @@ const useStyles = makeStyles(theme => ({
 	}
 }));
 
-export default function Producto() {
+export default function Producto(props) {
 	const classes = useStyles();
-	const { id } = useParams(),
-		[producto, setProducto] = useState({ data: {}, loading: true });
+	const [producto, setProducto] = useState({ data: {}, loading: true });
 
 	useEffect(() => {
-		getProductoById({ id }).then(data => {
-			console.log(data);
+		getProductoById(props.match.params.id).then(data => {
 			setProducto({ data, loading: false });
 		});
-	}, [id]);
+	}, [props.match.params.id]);
 
 	return (
 		<div className={classes.root}>
