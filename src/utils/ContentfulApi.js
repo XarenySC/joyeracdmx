@@ -41,15 +41,15 @@ export const getColeccionesProducto = () => {
 	});
 };
 
-export const getAllProductosByType = type=>{
+export const getAllProductosByTipo = type=>{
 	return ContentfulClient.getEntries({content_type:"producto", "fields.tipo":type}).then(entries=>{
-		return entries;
+		return entries.items;
 	})
 }
 
 export const getAllProductosByColeccion = coleccion=>{
 	return ContentfulClient.getEntries({content_type:"producto", "fields.coleccion":coleccion}).then(entries=>{
-		return entries;
+		return entries.items;
 	})
 }
 

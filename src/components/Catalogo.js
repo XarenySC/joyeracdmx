@@ -3,7 +3,11 @@ import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Tarjeta from "./Tarjeta";
 import Spinner from "./Spinner";
-import { getAllEntriesByType } from "../utils/ContentfulApi";
+import {
+	getAllEntriesByType,
+	getAllProductosByTipo,
+	getAllProductosByColeccion
+} from "../utils/ContentfulApi";
 
 const useStyles = makeStyles(theme => ({
 	root: {
@@ -24,7 +28,7 @@ const useStyles = makeStyles(theme => ({
 	}
 }));
 
-export default function Catalogo() {
+export default function Catalogo(props) {
 	const classes = useStyles();
 	const [catalogoData, setCatalogo] = useState({
 		productos: [],
@@ -32,10 +36,22 @@ export default function Catalogo() {
 	});
 
 	useEffect(() => {
-		getAllEntriesByType("producto").then(entries => {
-			setCatalogo({ productos: entries, loading: false });
-		});
-	}, []);
+		if (props.match.params.id) {
+			if (props.helper === "coleccion") {
+				getAllProductosByColeccion(props.match.params.id).then(entries => {
+					setCatalogo({ productos: entries, loading: false });
+				});
+			} else {
+				getAllProductosByTipo(props.match.params.id).then(entries => {
+					setCatalogo({ productos: entries, loading: false });
+				});
+			}
+		} else {
+			getAllEntriesByType("producto").then(entries => {
+				setCatalogo({ productos: entries, loading: false });
+			});
+		}
+	}, [props.match.params.id, props.helper]);
 
 	return (
 		<div className={classes.root}>

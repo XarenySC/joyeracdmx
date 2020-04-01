@@ -35,6 +35,8 @@ function App() {
 					<Route path="/" exact component={Index} />
 					<Route path="/catalogo" exact component={Catalogo} />
 					<Route path="/catalogo/:id" component={Producto} />
+					<Route path="/tipos/:id" render={(props)=><Catalogo {...props} helper="tipo"/>}/>
+					<Route path="/colecciones/:id" render={(props)=><Catalogo {...props} helper="coleccion"/>}/>
 					<Route path="/quienes_somos" component={Quienes} />
 					<Route path="/size" component={Size} />
 					<Route path="/contacto" component={Contacto} />
