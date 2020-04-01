@@ -29,8 +29,8 @@ export default function Envios() {
   const title = 'Envios y Devoluciones';
 
   useEffect(() => {
-    getEstaticoByTitle().then(info => {
-      setPost({ data: info.items.filter(item => item.fields.title === title)[0], loading: false });
+    getEstaticoByTitle(title).then(info => {
+      setPost({ data: info, loading: false })
     });
   }, []);
 
