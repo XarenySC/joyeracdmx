@@ -22,3 +22,15 @@ export const getEstaticoByTitle = () => {
     return entries
   })
 };
+
+export const getBlogById = id => {
+  return ContentfulClient.getEntry(id).then(entry => {
+    return {
+      title: entry.fields.title,
+      slug: entry.fields.slug,
+      imagenDestacada: entry.fields.imagenDestacada.fields.file.url,
+      content: entry.fields.content,
+      categoria: entry.fields.categoria,
+    };
+  });
+};

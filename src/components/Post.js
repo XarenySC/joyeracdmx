@@ -26,23 +26,23 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function Tarjeta(props) {
+export default function Post(props) {
   const classes = useStyles();
   return (
     <Card>
       <CardMedia
         className={classes.media}
-        image={props.imagen}
-        title={props.nombre}
+        image={props.imagenDestacada}
+        title={props.title}
       />
       <CardContent className={classes.center}>
-        <Typography variant="h5">{props.nombre}</Typography>
-        <Typography>{`$${props.precio} MXN`}</Typography>
+        <Typography variant="h5">{props.title}</Typography>
+        <Typography>{props.slug}</Typography>
       </CardContent>
       <CardActions className={classes.centerAction}>
-        <Link to={`/catalogo/${props.id}`}>
+        <Link to={`/blog/${props.id}`}>
           <Button size="small" className={classes.detalles}>
-            Más detalles
+            Ver más
 						<ArrowRightAlt />
           </Button>
         </Link>

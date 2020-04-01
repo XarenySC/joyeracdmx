@@ -9,6 +9,8 @@ import Contacto from "./components/Contacto";
 import Size from "./components/Size";
 import Envios from "./components/Envios";
 import Footer from "./components/Footer";
+import Blog from "./components/Blog";
+import BlogContent from "./components/BlogContent";
 import { HashRouter as Router, Switch, Route } from "react-router-dom";
 import dotenv from "dotenv";
 
@@ -36,7 +38,10 @@ function App() {
           <Route path="/quienes_somos" component={Quienes} />
           <Route path="/size" component={Size} />
           <Route path="/contacto" component={Contacto} />
+          <Route path="/blog" exact component={Blog} />
+          <Route path="/blog/:id" component={BlogContent} />
           <Route path="/envios" component={Envios} />
+
 
         </Switch>
       </Container>
