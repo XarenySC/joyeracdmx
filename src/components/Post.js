@@ -23,6 +23,9 @@ const useStyles = makeStyles(theme => ({
   },
   detalles: {
     color: "#986d0b"
+  },
+  link: {
+    textDecoration: "none"
   }
 }));
 
@@ -40,7 +43,7 @@ export default function Post(props) {
         <Typography>{props.slug}</Typography>
       </CardContent>
       <CardActions className={classes.centerAction}>
-        <Link to={`/blog/${props.id}`}>
+        <Link className={classes.link} to={`/blog/${props.id}`}>
           <Button size="small" className={classes.detalles}>
             Ver más
 						<ArrowRightAlt />

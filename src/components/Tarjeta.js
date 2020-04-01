@@ -23,7 +23,13 @@ const useStyles = makeStyles(theme => ({
   },
   detalles: {
     color: "#986d0b"
+  },
+  link: {
+    textDecoration: "none"
   }
+
+
+
 }));
 
 export default function Tarjeta(props) {
@@ -40,7 +46,7 @@ export default function Tarjeta(props) {
         <Typography>{`$${props.precio} MXN`}</Typography>
       </CardContent>
       <CardActions className={classes.centerAction}>
-        <Link to={`/catalogo/${props.id}`}>
+        <Link className={classes.link} to={`/catalogo/${props.id}`}>
           <Button size="small" className={classes.detalles}>
             Más detalles
 						<ArrowRightAlt />
