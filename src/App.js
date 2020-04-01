@@ -17,42 +17,39 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const useStyles = makeStyles(theme => ({
-  root: {
-    flexGrow: 1,
-    paddingTop: "7rem",
-    display: "flex"
-  }
+	root: {
+		flexGrow: 1,
+		paddingTop: "7rem",
+		display: "flex"
+	}
 }));
 
 function App() {
-  const classes = useStyles();
-  return (
-    <Router>
-      <Navbar />
-      <Container className={classes.root}>
-        <Navbar />
-        <Switch>
-          <Route path="/" exact component={Index} />
-          <Route path="/catalogo" exact component={Catalogo} />
-          <Route path="/catalogo/:id" component={Producto} />
-          <Route path="/quienes_somos" component={Quienes} />
-          <Route path="/size" component={Size} />
-          <Route path="/contacto" component={Contacto} />
-          <Route path="/blog" exact component={Blog} />
-          <Route path="/blog/:id" component={BlogContent} />
-          <Route path="/envios" component={Envios} />
-
-
-        </Switch>
-      </Container>
-      <Footer />
-    </Router>
-  );
+	const classes = useStyles();
+	return (
+		<Router>
+			<Navbar />
+			<Container className={classes.root}>
+				<Navbar />
+				<Switch>
+					<Route path="/" exact component={Index} />
+					<Route path="/catalogo" exact component={Catalogo} />
+					<Route path="/catalogo/:id" component={Producto} />
+					<Route path="/quienes_somos" component={Quienes} />
+					<Route path="/size" component={Size} />
+					<Route path="/contacto" component={Contacto} />
+					<Route path="/blog" exact component={Blog} />
+					<Route path="/blog/:id" component={BlogContent} />
+					<Route path="/envios" component={Envios} />
+				</Switch>
+			</Container>
+			<Footer />
+		</Router>
+	);
 }
 
 function Index() {
-  return <h2>Index</h2>;
+	return <h2>Index</h2>;
 }
-
 
 export default App;
