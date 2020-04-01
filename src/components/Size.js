@@ -23,10 +23,10 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function Quienes() {
+export default function Size() {
   const classes = useStyles();
   const [post, setPost] = useState({ data: null, loading: true });
-  const title = 'Quienes Somos';
+  const title = 'Tamaño y Cuidados';
 
   useEffect(() => {
     getEstaticoByTitle().then(info => {
