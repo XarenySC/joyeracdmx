@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
+import Container from "@material-ui/core/Container";
 import Tarjeta from "./Tarjeta";
 import Spinner from "./Spinner";
 import {
@@ -10,6 +11,11 @@ import {
 } from "../utils/ContentfulApi";
 
 const useStyles = makeStyles(theme => ({
+	container:{
+		flexGrow: 1,
+		paddingTop: "7rem",
+		display: "flex"
+	},
 	root: {
 		flexGrow: 1,
 		marginBottom: theme.spacing(2)
@@ -54,6 +60,7 @@ export default function Catalogo(props) {
 	}, [props.match.params.id, props.helper]);
 
 	return (
+		<Container className={classes.container}>
 		<div className={classes.root}>
 			<div className={classes.center}>
 				<h2 className={classes.header}>CATALOGO</h2>
@@ -77,5 +84,6 @@ export default function Catalogo(props) {
 				</Grid>
 			)}
 		</div>
+		</Container>
 	);
 }

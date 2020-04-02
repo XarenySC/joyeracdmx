@@ -1,16 +1,22 @@
 import React, { useEffect, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
+import Container from "@material-ui/core/Container";
 import { getProductoById } from "../utils/ContentfulApi";
 import Spinner from "./Spinner";
 
 const useStyles = makeStyles(theme => ({
+	container: {
+		flexGrow: 1,
+		paddingTop: "7rem",
+		display: "flex"
+	},
 	root: {
 		flexGrow: 1,
 		marginBottom: theme.spacing(2),
 		display: "flex",
 		justifyContent: "center",
-		alignItems:"center"
+		alignItems: "center"
 	},
 	media: {
 		height: "50vh"
@@ -57,33 +63,35 @@ export default function Producto(props) {
 	}, [props.match.params.id]);
 
 	return (
-		<div className={classes.root}>
-			{producto.loading ? (
-				<Spinner />
-			) : (
-				<Grid container spacing={3} className={classes.producto}>
-					<Grid item xs={12} md={6} className={classes.center}>
-						<img
-							className={classes.media}
-							src={producto.data.imagen}
-							alt={producto.data.nombre}
-						/>
+		<Container className={classes.container}>
+			<div className={classes.root}>
+				{producto.loading ? (
+					<Spinner />
+				) : (
+					<Grid container spacing={3} className={classes.producto}>
+						<Grid item xs={12} md={6} className={classes.center}>
+							<img
+								className={classes.media}
+								src={producto.data.imagen}
+								alt={producto.data.nombre}
+							/>
+						</Grid>
+						<Grid item xs={12} md={6} className={classes.center}>
+							<h1 className={`${classes.header} ${classes.noBorder}`}>
+								{producto.data.nombre}
+							</h1>
+							<div>
+								<h2
+									className={classes.header}
+								>{`$${producto.data.precio} MXN`}</h2>
+							</div>
+							<div>
+								<p className={classes.info}>{producto.data.descripcion}</p>
+							</div>
+						</Grid>
 					</Grid>
-					<Grid item xs={12} md={6} className={classes.center}>
-						<h1 className={`${classes.header} ${classes.noBorder}`}>
-							{producto.data.nombre}
-						</h1>
-						<div>
-							<h2
-								className={classes.header}
-							>{`$${producto.data.precio} MXN`}</h2>
-						</div>
-						<div>
-							<p className={classes.info}>{producto.data.descripcion}</p>
-						</div>
-					</Grid>
-				</Grid>
-			)}
-		</div>
+				)}
+			</div>
+		</Container>
 	);
 }

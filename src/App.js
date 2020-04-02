@@ -1,6 +1,4 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import Container from "@material-ui/core/container";
 import Navbar from "./components/Navbar";
 import Catalogo from "./components/Catalogo";
 import Producto from "./components/Producto";
@@ -13,30 +11,25 @@ import Blog from "./components/Blog";
 import BlogContent from "./components/BlogContent";
 import { HashRouter as Router, Switch, Route } from "react-router-dom";
 import dotenv from "dotenv";
-
+import {Carrusel} from "./components/Carrusel";
 dotenv.config();
 
-const useStyles = makeStyles(theme => ({
-	root: {
-		flexGrow: 1,
-		paddingTop: "7rem",
-		display: "flex"
-	}
-}));
-
 function App() {
-	const classes = useStyles();
 	return (
 		<Router>
 			<Navbar />
-			<Container className={classes.root}>
-				<Navbar />
 				<Switch>
 					<Route path="/" exact component={Index} />
 					<Route path="/catalogo" exact component={Catalogo} />
 					<Route path="/catalogo/:id" component={Producto} />
-					<Route path="/tipos/:id" render={(props)=><Catalogo {...props} helper="tipo"/>}/>
-					<Route path="/colecciones/:id" render={(props)=><Catalogo {...props} helper="coleccion"/>}/>
+					<Route
+						path="/tipos/:id"
+						render={props => <Catalogo {...props} helper="tipo" />}
+					/>
+					<Route
+						path="/colecciones/:id"
+						render={props => <Catalogo {...props} helper="coleccion" />}
+					/>
 					<Route path="/quienes_somos" component={Quienes} />
 					<Route path="/size" component={Size} />
 					<Route path="/contacto" component={Contacto} />
@@ -44,14 +37,13 @@ function App() {
 					<Route path="/blog/:id" component={BlogContent} />
 					<Route path="/envios" component={Envios} />
 				</Switch>
-			</Container>
 			<Footer />
 		</Router>
 	);
 }
 
 function Index() {
-	return <h2>Index</h2>;
+	return <Carrusel />;
 }
 
 export default App;
