@@ -4,6 +4,14 @@ import Grid from "@material-ui/core/Grid";
 import { getBlogById } from "../utils/ContentfulApi";
 import Spinner from "./Spinner";
 import Container from "@material-ui/core/Container";
+import marked from "marked";
+
+const renderer = new marked.Renderer();
+
+marked.options({
+	breaks: true,
+	renderer: renderer
+});
 
 const useStyles = makeStyles(theme => ({
 	container: {
@@ -19,7 +27,7 @@ const useStyles = makeStyles(theme => ({
 		alignItems: "center"
 	},
 	media: {
-		height: "50vh"
+		width: "100%"
 	},
 	header: {
 		marginTop: 0,
@@ -31,6 +39,10 @@ const useStyles = makeStyles(theme => ({
 		textAlign: "center"
 	}
 }));
+
+const createMarkup = content => {
+	return { __html: marked(content) };
+};
 
 export default function BlogContent(props) {
 	const classes = useStyles();
@@ -56,12 +68,15 @@ export default function BlogContent(props) {
 						</div>
 						<div>
 							<img
+								className={classes.media}
 								src={blogContent.data.imagenDestacada}
 								alt={blogContent.data.title}
 							/>
 						</div>
 						<Grid container className={classes.center}>
-							<p>{blogContent.data.content}</p>
+							<div
+								dangerouslySetInnerHTML={createMarkup(blogContent.data.content)}
+							/>
 						</Grid>
 					</div>
 				)}
