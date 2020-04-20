@@ -1,3 +1,7 @@
+:root {
+	--main-color: #986D0B;
+}
+
 html, body, #root{
 	min-height: 100vh;
 	display: flex;

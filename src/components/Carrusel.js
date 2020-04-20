@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-import "react-responsive-carousel/lib/styles/carousel.min.css";
+import "./Carrusel.css";
 import { Carousel } from "react-responsive-carousel";
 import { getCarruselEntries } from "../utils/ContentfulApi";
 import { Link } from "react-router-dom";
+import TrendingFlat from "@material-ui/icons/TrendingFlat";
 
 export class Carrusel extends Component {
 	state = {
@@ -20,14 +21,33 @@ export class Carrusel extends Component {
 
 	render() {
 		return (
-			<Carousel showArrows={true} showThumbs={false} showStatus={false}>
+			<Carousel
+				showArrows
+				showThumbs={false}
+				showStatus={false}
+				showIndicators={false}
+				autoPlay
+				interval={3000}
+				infiniteLoop
+				className="carrusel"
+			>
 				{this.state.carrusel.map(item => {
 					return (
-						<div key={item.title}>
+						<div className="carrusel-container" key={item.title}>
 							<img src={item.img} alt={item.title} />
-							<Link to={`/colecciones/${item.coleccion}`} className="legend">
-								Descubrela
-							</Link>
+							<div className="legend">
+								<h2 className="carrusel-title">{item.title}</h2>
+								<h2 className="carrusel-subtitle">{item.subtitle}</h2>
+								<div className="carrusel-container">
+									<Link
+										className="carrusel-link"
+										to={`/colecciones/${item.coleccion}`}
+									>
+										Descúbrela
+										<TrendingFlat />
+									</Link>
+								</div>
+							</div>
 						</div>
 					);
 				})}
