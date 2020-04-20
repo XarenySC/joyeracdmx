@@ -1,7 +1,10 @@
 import { ContentfulClient } from "./ContentfulUtils";
 
 export const getAllEntriesByType = type => {
-	return ContentfulClient.getEntries({ content_type: type }).then(entries => {
+	return ContentfulClient.getEntries({
+		content_type: type,
+		"fields.tipo[ne]": "Más Vendido"
+	}).then(entries => {
 		return entries.items;
 	});
 };
@@ -53,7 +56,8 @@ export const getAllProductosByTipo = type => {
 export const getAllProductosByColeccion = coleccion => {
 	return ContentfulClient.getEntries({
 		content_type: "producto",
-		"fields.coleccion": coleccion
+		"fields.coleccion": coleccion,
+		"fields.tipo[ne]": "Más Vendido"
 	}).then(entries => {
 		return entries.items;
 	});
