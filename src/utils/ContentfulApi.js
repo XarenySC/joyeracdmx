@@ -63,6 +63,15 @@ export const getAllProductosByColeccion = coleccion => {
 	});
 };
 
+export const getAllProductosByMasVendido = () => {
+	return ContentfulClient.getEntries({
+		content_type: "producto",
+		"fields.tipo": "Más Vendido"
+	}).then(entries => {
+		return entries.items;
+	});
+};
+
 export const getProductoByNombre = nombre => {
 	return ContentfulClient.getEntries({
 		content_type: "producto",

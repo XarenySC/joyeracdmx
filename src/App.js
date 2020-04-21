@@ -1,5 +1,6 @@
 import React from "react";
 import Navbar from "./components/Navbar";
+import Home from "./components/Home";
 import Catalogo from "./components/Catalogo";
 import Producto from "./components/Producto";
 import Quienes from "./components/Quienes";
@@ -11,28 +12,14 @@ import Blog from "./components/Blog";
 import BlogContent from "./components/BlogContent";
 import { HashRouter as Router, Switch, Route } from "react-router-dom";
 import dotenv from "dotenv";
-import { Carrusel } from "./components/Carrusel";
-import { makeStyles } from "@material-ui/core/styles";
 dotenv.config();
-
-const useStyles = makeStyles(theme => ({
-	container: {
-		flexGrow: 1,
-		paddingTop: "5.30rem",
-		display: "flex"
-	},
-	root: {
-		flexGrow: 1,
-		marginBottom: theme.spacing(2)
-	}
-}));
 
 function App() {
 	return (
 		<Router>
 			<Navbar />
 			<Switch>
-				<Route path="/" exact component={Index} />
+				<Route path="/" exact component={Home} />
 				<Route path="/catalogo" exact component={Catalogo} />
 				<Route path="/catalogo/:id" component={Producto} />
 				<Route
@@ -52,15 +39,6 @@ function App() {
 			</Switch>
 			<Footer />
 		</Router>
-	);
-}
-
-function Index() {
-	const classes = useStyles();
-	return (
-		<div className={classes.container}>
-			<Carrusel />
-		</div>
 	);
 }
 

@@ -27,9 +27,6 @@ const useStyles = makeStyles(theme => ({
   link: {
     textDecoration: "none"
   }
-
-
-
 }));
 
 export default function Tarjeta(props) {
