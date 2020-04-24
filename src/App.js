@@ -10,7 +10,7 @@ import Envios from "./components/Envios";
 import Footer from "./components/Footer";
 import Blog from "./components/Blog";
 import BlogContent from "./components/BlogContent";
-import { HashRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import dotenv from "dotenv";
 dotenv.config();
 
