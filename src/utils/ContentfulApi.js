@@ -9,6 +9,14 @@ export const getAllEntriesByType = type => {
 	});
 };
 
+export const getAllBlogs = () => {
+	return ContentfulClient.getEntries({
+		content_type: "blog"
+	}).then(entries => {
+		return entries.items;
+	});
+};
+
 export const getProductoById = id => {
 	return ContentfulClient.getEntry(id).then(entry => {
 		return {

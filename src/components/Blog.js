@@ -3,7 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Post from "./Post";
 import Spinner from "./Spinner";
-import { getAllEntriesByType } from "../utils/ContentfulApi";
+import { getAllBlogs } from "../utils/ContentfulApi";
 import Container from "@material-ui/core/Container";
 
 const useStyles = makeStyles(theme => ({
@@ -38,7 +38,7 @@ export default function Blog() {
 	});
 
 	useEffect(() => {
-		getAllEntriesByType("blog").then(entries => {
+		getAllBlogs().then(entries => {
 			setBlog({ posts: entries, loading: false });
 		});
 	}, []);
