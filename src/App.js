@@ -3,7 +3,7 @@ import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import Catalogo from "./components/Catalogo";
 import Producto from "./components/Producto";
-import Quienes from "./components/Quienes";
+import Nosotros from "./components/Nosotros";
 import Contacto from "./components/Contacto";
 import Size from "./components/Size";
 import Envios from "./components/Envios";
@@ -30,7 +30,7 @@ function App() {
 					path="/colecciones/:id"
 					render={props => <Catalogo {...props} helper="coleccion" />}
 				/>
-				<Route path="/quienes_somos" component={Quienes} />
+				<Route path="/nosotros" component={Nosotros} />
 				<Route path="/size" component={Size} />
 				<Route path="/contacto" component={Contacto} />
 				<Route path="/blog" exact component={Blog} />

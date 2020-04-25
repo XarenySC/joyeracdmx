@@ -4,8 +4,33 @@ import { Carousel } from "react-responsive-carousel";
 import { getCarruselEntries } from "../utils/ContentfulApi";
 import { Link } from "react-router-dom";
 import TrendingFlat from "@material-ui/icons/TrendingFlat";
+import { withStyles } from "@material-ui/core/styles";
+import Typography from "@material-ui/core/Typography";
 
-export class Carrusel extends Component {
+const styles = theme => ({
+	carruselTitle: {
+		fontSize: "5rem",
+		[theme.breakpoints.down("md")]: {
+			fontSize: "1.5rem"
+		},
+		fontWeight: "bold",
+		margin: 0,
+		color: "#986D0B"
+	},
+	carruselSubtitle: {
+		fontSize: "1.5rem",
+		[theme.breakpoints.down("md")]: {
+			fontSize: "1rem"
+		},
+		margin: ".5rem 0 2.5rem 0",
+		[theme.breakpoints.down("md")]: {
+			marginBottom: "1rem"
+		},
+		color: "#986D0B"
+	}
+});
+
+class Carrusel extends Component {
 	state = {
 		carrusel: [],
 		loading: true
@@ -20,6 +45,8 @@ export class Carrusel extends Component {
 	}
 
 	render() {
+		const { classes } = this.props;
+
 		return (
 			<Carousel
 				showArrows
@@ -27,7 +54,7 @@ export class Carrusel extends Component {
 				showStatus={false}
 				showIndicators={false}
 				autoPlay
-				interval={3000}
+				interval={7000}
 				infiniteLoop
 				className="carrusel"
 			>
@@ -36,8 +63,12 @@ export class Carrusel extends Component {
 						<div className="carrusel-container" key={item.title}>
 							<img src={item.img} alt={item.title} />
 							<div className="legend">
-								<h2 className="carrusel-title">{item.title}</h2>
-								<h2 className="carrusel-subtitle">{item.subtitle}</h2>
+								<Typography className={classes.carruselTitle}>
+									{item.title}
+								</Typography>
+								<Typography className={classes.carruselSubtitle}>
+									{item.subtitle}
+								</Typography>
 								<div className="carrusel-container">
 									<Link
 										className="carrusel-link"
@@ -55,3 +86,5 @@ export class Carrusel extends Component {
 		);
 	}
 }
+
+export default withStyles(styles, { withTheme: true })(Carrusel);

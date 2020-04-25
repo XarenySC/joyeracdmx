@@ -9,6 +9,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
 import Button from "@material-ui/core/Button";
 import Link from "@material-ui/core/Link";
+import Divider from "@material-ui/core/Divider";
 
 // Iconos
 import AccountCircle from "@material-ui/icons/AccountCircle";
@@ -40,7 +41,6 @@ const useStyles = makeStyles(theme => ({
 		alignItems: "center"
 	},
 	header: {
-		//padding: theme.spacing(1)
 		margin: theme.spacing(1)
 	},
 	headerContainer: {
@@ -71,14 +71,22 @@ const useStyles = makeStyles(theme => ({
 	textCenter: {
 		textAlign: "center"
 	},
+	textRight: {
+		justifyContent: "end"
+	},
 	link: {
 		color: "#212121",
 		textDecoration: "none"
+	},
+	menuItem:{
+		"&:hover": {
+			fontWeight: "bold",
+			backgroundColor: "white"
+		}
 	}
 }));
 
 export default function PrimarySearchAppBar() {
-
 	const classes = useStyles();
 
 	const [anchorEl, setAnchorEl] = React.useState(null);
@@ -185,10 +193,10 @@ export default function PrimarySearchAppBar() {
 				className={classes.link}
 				to="/catalogo"
 			>
-				<MenuItem>Todos</MenuItem>
+				<MenuItem className={classes.menuItem} disableRipple>Todos</MenuItem>
 			</LinkTo>
-			<MenuItem onClick={handleMenuTiposOpen}>Tipos</MenuItem>
-			<MenuItem onClick={handleMenuColeccionesOpen}>Colecciones</MenuItem>
+			<MenuItem className={classes.menuItem} disableRipple onClick={handleMenuTiposOpen}>Tipos</MenuItem>
+			<MenuItem className={classes.menuItem} disableRipple onClick={handleMenuColeccionesOpen}>Colecciones</MenuItem>
 		</Menu>
 	);
 
@@ -211,7 +219,7 @@ export default function PrimarySearchAppBar() {
 						className={classes.link}
 						to={`/tipos/${item}`}
 					>
-						<MenuItem>{item}</MenuItem>
+						<MenuItem className={classes.menuItem} disableRipple>{item}</MenuItem>
 					</LinkTo>
 				) : null;
 			})}
@@ -237,7 +245,7 @@ export default function PrimarySearchAppBar() {
 						className={classes.link}
 						to={`/colecciones/${item}`}
 					>
-						<MenuItem>{item}</MenuItem>
+						<MenuItem className={classes.menuItem} disableRipple>{item}</MenuItem>
 					</LinkTo>
 				);
 			})}
@@ -255,37 +263,60 @@ export default function PrimarySearchAppBar() {
 			open={isMobileMenuOpen}
 			onClose={handleMobileMenuClose}
 		>
-			<MenuItem onClick={handleProfileMenuOpen}>
+			<MenuItem className={classes.menuItem} onClick={handleProfileMenuOpen} disableRipple>
 				<IconButton
 					aria-controls="primary-search-account-menu"
 					aria-haspopup="true"
 					color="inherit"
+					className={classes.menuItem}
+					disableRipple
 				>
 					<AccountCircle />
 				</IconButton>
 				<p>Login</p>
 			</MenuItem>
-			<MenuItem>
-				<IconButton color="inherit">
+			<MenuItem className={classes.menuItem} disableRipple>
+				<IconButton color="inherit" className={classes.menuItem} disableRipple>
 					<ShoppingCart />
 				</IconButton>
 				<p>Carrito</p>
 			</MenuItem>
-			<MenuItem>
-				<IconButton color="inherit">
+			<MenuItem className={classes.menuItem} disableRipple>
+				<IconButton color="inherit" className={classes.menuItem} disableRipple>
 					<Link href="https://github.com/XarenySC/joyeracdmx" color="inherit">
 						<Facebook />
 					</Link>
 				</IconButton>
 				<p>Facebook</p>
 			</MenuItem>
-			<MenuItem>
-				<IconButton color="inherit">
+			<MenuItem className={classes.menuItem} disableRipple>
+				<IconButton color="inherit" className={classes.menuItem} disableRipple>
 					<Link href="https://github.com/XarenySC/joyeracdmx" color="inherit">
 						<Instagram />
 					</Link>
 				</IconButton>
 				<p>Instagram</p>
+			</MenuItem>
+			<Divider />
+			<MenuItem className={`${classes.textRight} ${classes.menuItem}`} disableRipple>
+				<LinkTo className={classes.link} to="/catalogo">
+					Tienda
+				</LinkTo>
+			</MenuItem>
+			<MenuItem className={`${classes.textRight} ${classes.menuItem}`} disableRipple>
+				<LinkTo className={classes.link} to="/nosotros">
+					Nosotros
+				</LinkTo>
+			</MenuItem>
+			<MenuItem className={`${classes.textRight} ${classes.menuItem}`} disableRipple>
+				<LinkTo className={classes.link} to="/blog">
+					Blog
+				</LinkTo>
+			</MenuItem>
+			<MenuItem className={`${classes.textRight} ${classes.menuItem}`} disableRipple>
+				<LinkTo className={classes.link} to="/contacto">
+					Contacto
+				</LinkTo>
 			</MenuItem>
 		</Menu>
 	);
@@ -302,20 +333,22 @@ export default function PrimarySearchAppBar() {
 							aria-controls={menuTiendaId}
 							aria-haspopup="true"
 							onClick={handleMenuTiendaOpen}
+							className={classes.menuItem}
+							disableRipple
 						>
-							<Typography>TIENDA</Typography>
+							<Typography className={classes.menuItem}>TIENDA</Typography>
 						</Button>
-						<Button>
-							<LinkTo className={classes.link} to="/quienes_somos">
-								QUIENES SOMOS
+						<Button className={classes.menuItem} disableRipple>
+							<LinkTo className={classes.link} to="/nosotros">
+								Nosotros
 							</LinkTo>
 						</Button>
-						<Button>
+						<Button className={classes.menuItem} disableRipple>
 							<LinkTo className={classes.link} to="/blog">
 								BLOG
 							</LinkTo>
 						</Button>
-						<Button>
+						<Button className={classes.menuItem} disableRipple>
 							<LinkTo className={classes.link} to="/contacto">
 								CONTACTO
 							</LinkTo>
@@ -336,11 +369,13 @@ export default function PrimarySearchAppBar() {
 							aria-haspopup="true"
 							onClick={handleProfileMenuOpen}
 							color="inherit"
+							className={classes.menuItem}
+							disableRipple
 						>
 							<AccountCircle />
-							<Typography>Login</Typography>
+							<Typography className={classes.menuItem}>Login</Typography>
 						</IconButton>
-						<IconButton color="inherit">
+						<IconButton color="inherit" className={classes.menuItem} disableRipple>
 							<Link
 								href="https://github.com/XarenySC/joyeracdmx"
 								color="inherit"
@@ -348,7 +383,7 @@ export default function PrimarySearchAppBar() {
 								<Facebook />
 							</Link>
 						</IconButton>
-						<IconButton color="inherit">
+						<IconButton color="inherit" className={classes.menuItem} disableRipple>
 							<Link
 								href="https://github.com/XarenySC/joyeracdmx"
 								color="inherit"
@@ -356,7 +391,7 @@ export default function PrimarySearchAppBar() {
 								<Instagram />
 							</Link>
 						</IconButton>
-						<IconButton aria-label="Carrito" color="inherit">
+						<IconButton aria-label="Carrito" color="inherit" className={classes.menuItem} disableRipple>
 							<ShoppingCart />
 						</IconButton>
 					</div>
@@ -366,6 +401,8 @@ export default function PrimarySearchAppBar() {
 							aria-haspopup="true"
 							onClick={handleMobileMenuOpen}
 							color="inherit"
+							className={classes.menuItem}
+							disableRipple
 						>
 							<MoreIcon />
 						</IconButton>

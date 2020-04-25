@@ -35,6 +35,11 @@ const useStyles = makeStyles(theme => ({
     textAlign: "center",
     margin: ".52rem",
     color: "#FFF"
+  },
+  hide: {
+  	[theme.breakpoints.down("sm")]: {
+      display: "none"
+    }
   }
 }));
 
@@ -43,26 +48,6 @@ export default function Footer() {
   return (
     <div className={`${classes.root} ${classes.footer}`}>
       <div className={`${classes.root} ${classes.subMenu}`}>
-        <Button className={classes.menuItem}>
-          <Link className={classes.link} to="/catalogo">
-            TIENDA
-					</Link>
-        </Button>
-        <Button className={classes.menuItem}>
-          <Link className={classes.link} to="/quienes_somos">
-            QUIENES SOMOS
-					</Link>
-        </Button>
-        <Button className={classes.menuItem}>
-          <Link className={classes.link} to="/blog">
-            BLOG
-					</Link>
-        </Button>
-        <Button className={classes.menuItem}>
-          <Link className={classes.link} to="/contacto">
-            CONTACTO
-					</Link>
-        </Button>
         <Button className={classes.menuItem}>
           <Link className={classes.link} to="/envios">
             ENVIOS Y DEVOLUCIONES

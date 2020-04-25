@@ -1,5 +1,5 @@
 import React from "react";
-import { Carrusel } from "./Carrusel";
+import Carrusel from "./Carrusel";
 import MasVendidos from  "./MasVendidos";
 import { makeStyles } from "@material-ui/core/styles";
 
