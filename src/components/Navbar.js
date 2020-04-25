@@ -336,7 +336,7 @@ export default function PrimarySearchAppBar() {
 							className={classes.menuItem}
 							disableRipple
 						>
-							<Typography className={classes.menuItem}>TIENDA</Typography>
+							TIENDA
 						</Button>
 						<Button className={classes.menuItem} disableRipple>
 							<LinkTo className={classes.link} to="/nosotros">
