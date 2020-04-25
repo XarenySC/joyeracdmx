@@ -19,7 +19,8 @@ const useStyles = makeStyles(theme => ({
 		alignItems: "center"
 	},
 	media: {
-		height: "50vh"
+		maxHeight: "50vh",
+		maxWidth: "100%"
 	},
 	header: {
 		marginTop: 0,
@@ -68,6 +69,7 @@ export default function Producto(props) {
 				{producto.loading ? (
 					<Spinner />
 				) : (
+				<div>
 					<Grid container spacing={3} className={classes.producto}>
 						<Grid item xs={12} md={6} className={classes.center}>
 							<img
@@ -90,6 +92,8 @@ export default function Producto(props) {
 							</div>
 						</Grid>
 					</Grid>
+				</div>
+					
 				)}
 			</div>
 		</Container>
