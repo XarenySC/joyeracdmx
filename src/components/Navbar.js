@@ -72,13 +72,13 @@ const useStyles = makeStyles(theme => ({
 		textAlign: "center"
 	},
 	textRight: {
-		justifyContent: "end"
+		flexFlow: "row-reverse"
 	},
 	link: {
 		color: "#212121",
 		textDecoration: "none"
 	},
-	menuItem:{
+	menuItem: {
 		"&:hover": {
 			fontWeight: "bold",
 			backgroundColor: "white"
@@ -96,6 +96,7 @@ export default function PrimarySearchAppBar() {
 	const [menuColeccionesAnchorEl, setMenuColeccionesAnchorEl] = React.useState(
 		null
 	);
+	const [menuType, setMenuType] = React.useState(null);
 
 	const [tipos, setTipos] = React.useState([]);
 	const [colecciones, setColecciones] = React.useState([]);
@@ -124,15 +125,22 @@ export default function PrimarySearchAppBar() {
 
 	const handleMenuClose = () => {
 		setAnchorEl(null);
-		handleMobileMenuClose();
+		setMenuTiendaAnchorEl(null);
+		setMenuTiposAnchorEl(null);
+		setMenuColeccionesAnchorEl(null);
 	};
 
 	const handleMobileMenuOpen = event => {
 		setMobileMoreAnchorEl(event.currentTarget);
+		setMenuType("mobile");
 	};
 
 	const handleMobileMenuClose = () => {
 		setMobileMoreAnchorEl(null);
+		setMenuTiendaAnchorEl(null);
+		setMenuTiposAnchorEl(null);
+		setMenuColeccionesAnchorEl(null);
+		setMenuType(null);
 	};
 
 	const handleMenuTiendaOpen = event => {
@@ -140,6 +148,8 @@ export default function PrimarySearchAppBar() {
 	};
 
 	const handleMenuTiendaClose = () => {
+		setAnchorEl(null);
+		setMobileMoreAnchorEl(null);
 		setMenuTiendaAnchorEl(null);
 	};
 
@@ -148,8 +158,10 @@ export default function PrimarySearchAppBar() {
 	};
 
 	const handleMenuTiposClose = () => {
-		setMenuTiposAnchorEl(null);
+		setAnchorEl(null);
+		setMobileMoreAnchorEl(null);
 		setMenuTiendaAnchorEl(null);
+		setMenuTiposAnchorEl(null);
 	};
 
 	const handleMenuColeccionesOpen = event => {
@@ -157,8 +169,10 @@ export default function PrimarySearchAppBar() {
 	};
 
 	const handleMenuColeccionesClose = () => {
-		setMenuColeccionesAnchorEl(null);
+		setAnchorEl(null);
+		setMobileMoreAnchorEl(null);
 		setMenuTiendaAnchorEl(null);
+		setMenuColeccionesAnchorEl(null);
 	};
 
 	const menuId = "primary-search-account-menu";
@@ -181,10 +195,14 @@ export default function PrimarySearchAppBar() {
 	const renderMenuTienda = (
 		<Menu
 			anchorEl={menuTiendaAnchorEl}
-			anchorOrigin={{ vertical: "top", horizontal: "right" }}
+			anchorOrigin={{ vertical: "top", horizontal: "left" }}
 			id={menuTiendaId}
 			keepMounted
-			transformOrigin={{ vertical: "top", horizontal: "right" }}
+			transformOrigin={
+				menuType !== "mobile"
+					? { vertical: "top", horizontal: "left" }
+					: { vertical: "top", horizontal: "right" }
+			}
 			open={isMenuTiendaOpen}
 			onClose={handleMenuTiendaClose}
 		>
@@ -193,10 +211,24 @@ export default function PrimarySearchAppBar() {
 				className={classes.link}
 				to="/catalogo"
 			>
-				<MenuItem className={classes.menuItem} disableRipple>Todos</MenuItem>
+				<MenuItem className={classes.menuItem} disableRipple>
+					Todos
+				</MenuItem>
 			</LinkTo>
-			<MenuItem className={classes.menuItem} disableRipple onClick={handleMenuTiposOpen}>Tipos</MenuItem>
-			<MenuItem className={classes.menuItem} disableRipple onClick={handleMenuColeccionesOpen}>Colecciones</MenuItem>
+			<MenuItem
+				className={classes.menuItem}
+				disableRipple
+				onClick={handleMenuTiposOpen}
+			>
+				Tipos
+			</MenuItem>
+			<MenuItem
+				className={classes.menuItem}
+				disableRipple
+				onClick={handleMenuColeccionesOpen}
+			>
+				Colecciones
+			</MenuItem>
 		</Menu>
 	);
 
@@ -219,7 +251,9 @@ export default function PrimarySearchAppBar() {
 						className={classes.link}
 						to={`/tipos/${item}`}
 					>
-						<MenuItem className={classes.menuItem} disableRipple>{item}</MenuItem>
+						<MenuItem className={classes.menuItem} disableRipple>
+							{item}
+						</MenuItem>
 					</LinkTo>
 				) : null;
 			})}
@@ -241,11 +275,13 @@ export default function PrimarySearchAppBar() {
 				return (
 					<LinkTo
 						key={item}
-						onClick={handleMenuTiposClose}
+						onClick={handleMenuColeccionesClose}
 						className={classes.link}
 						to={`/colecciones/${item}`}
 					>
-						<MenuItem className={classes.menuItem} disableRipple>{item}</MenuItem>
+						<MenuItem className={classes.menuItem} disableRipple>
+							{item}
+						</MenuItem>
 					</LinkTo>
 				);
 			})}
@@ -263,7 +299,11 @@ export default function PrimarySearchAppBar() {
 			open={isMobileMenuOpen}
 			onClose={handleMobileMenuClose}
 		>
-			<MenuItem className={classes.menuItem} onClick={handleProfileMenuOpen} disableRipple>
+			<MenuItem
+				className={classes.menuItem}
+				onClick={handleProfileMenuOpen}
+				disableRipple
+			>
 				<IconButton
 					aria-controls="primary-search-account-menu"
 					aria-haspopup="true"
@@ -298,22 +338,35 @@ export default function PrimarySearchAppBar() {
 				<p>Instagram</p>
 			</MenuItem>
 			<Divider />
-			<MenuItem className={`${classes.textRight} ${classes.menuItem}`} disableRipple>
-				<LinkTo className={classes.link} to="/catalogo">
-					Tienda
-				</LinkTo>
+			<MenuItem
+				className={`${classes.textRight} ${classes.menuItem}`}
+				aria-controls={menuTiendaId}
+				aria-haspopup="true"
+				onClick={handleMenuTiendaOpen}
+				disableRipple
+			>
+				Tienda
 			</MenuItem>
-			<MenuItem className={`${classes.textRight} ${classes.menuItem}`} disableRipple>
+			<MenuItem
+				className={`${classes.textRight} ${classes.menuItem}`}
+				disableRipple
+			>
 				<LinkTo className={classes.link} to="/nosotros">
 					Nosotros
 				</LinkTo>
 			</MenuItem>
-			<MenuItem className={`${classes.textRight} ${classes.menuItem}`} disableRipple>
+			<MenuItem
+				className={`${classes.textRight} ${classes.menuItem}`}
+				disableRipple
+			>
 				<LinkTo className={classes.link} to="/blog">
 					Blog
 				</LinkTo>
 			</MenuItem>
-			<MenuItem className={`${classes.textRight} ${classes.menuItem}`} disableRipple>
+			<MenuItem
+				className={`${classes.textRight} ${classes.menuItem}`}
+				disableRipple
+			>
 				<LinkTo className={classes.link} to="/contacto">
 					Contacto
 				</LinkTo>
@@ -375,7 +428,11 @@ export default function PrimarySearchAppBar() {
 							<AccountCircle />
 							<Typography className={classes.menuItem}>Login</Typography>
 						</IconButton>
-						<IconButton color="inherit" className={classes.menuItem} disableRipple>
+						<IconButton
+							color="inherit"
+							className={classes.menuItem}
+							disableRipple
+						>
 							<Link
 								href="https://github.com/XarenySC/joyeracdmx"
 								color="inherit"
@@ -383,7 +440,11 @@ export default function PrimarySearchAppBar() {
 								<Facebook />
 							</Link>
 						</IconButton>
-						<IconButton color="inherit" className={classes.menuItem} disableRipple>
+						<IconButton
+							color="inherit"
+							className={classes.menuItem}
+							disableRipple
+						>
 							<Link
 								href="https://github.com/XarenySC/joyeracdmx"
 								color="inherit"
@@ -391,7 +452,12 @@ export default function PrimarySearchAppBar() {
 								<Instagram />
 							</Link>
 						</IconButton>
-						<IconButton aria-label="Carrito" color="inherit" className={classes.menuItem} disableRipple>
+						<IconButton
+							aria-label="Carrito"
+							color="inherit"
+							className={classes.menuItem}
+							disableRipple
+						>
 							<ShoppingCart />
 						</IconButton>
 					</div>
