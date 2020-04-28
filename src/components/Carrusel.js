@@ -11,11 +11,12 @@ const styles = theme => ({
 	carruselTitle: {
 		fontSize: "5rem",
 		[theme.breakpoints.down("md")]: {
-			fontSize: "1.5rem"
+			fontSize: "1.5rem",
+			color: "#FFF"
 		},
 		fontWeight: "bold",
 		margin: 0,
-		color: "#986D0B"
+		color: "#FDC500"
 	},
 	carruselSubtitle: {
 		fontSize: "1.5rem",
@@ -24,9 +25,10 @@ const styles = theme => ({
 		},
 		margin: ".5rem 0 2.5rem 0",
 		[theme.breakpoints.down("md")]: {
-			marginBottom: "1rem"
+			marginBottom: "1rem",
+			color: "#FFF"
 		},
-		color: "#986D0B"
+		color: "#FDC500"
 	}
 });
 
