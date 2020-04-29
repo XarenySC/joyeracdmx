@@ -10,7 +10,7 @@ import Typography from "@material-ui/core/Typography";
 const styles = theme => ({
 	carruselTitle: {
 		fontSize: "5rem",
-		[theme.breakpoints.down("md")]: {
+		[theme.breakpoints.down("sm")]: {
 			fontSize: "1.5rem",
 			color: "#FFF"
 		},
@@ -24,11 +24,32 @@ const styles = theme => ({
 			fontSize: "1rem"
 		},
 		margin: ".5rem 0 2.5rem 0",
-		[theme.breakpoints.down("md")]: {
+		[theme.breakpoints.down("sm")]: {
 			marginBottom: "1rem",
 			color: "#FFF"
 		},
 		color: "#FDC500"
+	},
+	normal:{
+		[theme.breakpoints.down("sm")]:{
+			display:"none !important",
+		},
+		height:"100%"
+	},
+	movil:{
+		[theme.breakpoints.up("md")]:{
+			display:"none !important",
+		},
+		height:"100%"
+	},
+	carruselContainer:{
+		display: "flex",
+		flexGrow: 1,
+		[theme.breakpoints.down("sm")]:{
+			alignItems: "end"
+		},
+		justifyContent: "center",
+		alignItems: "center",
 	}
 });
 
@@ -62,8 +83,9 @@ class Carrusel extends Component {
 			>
 				{this.state.carrusel.map(item => {
 					return (
-						<div className="carrusel-container" key={item.title}>
-							<img src={item.img} alt={item.title} />
+						<div className={classes.carruselContainer} key={item.title}>
+							<img className={classes.normal} src={item.img} alt={item.title} />
+							<img className={classes.movil} src={item.movil} alt={item.title} />
 							<div className="legend">
 								<Typography className={classes.carruselTitle}>
 									{item.title}
@@ -71,7 +93,7 @@ class Carrusel extends Component {
 								<Typography className={classes.carruselSubtitle}>
 									{item.subtitle}
 								</Typography>
-								<div className="carrusel-container">
+								<div className={classes.carruselContainer}>
 									<Link
 										className="carrusel-link"
 										to={`/colecciones/${item.coleccion}`}

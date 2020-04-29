@@ -119,6 +119,7 @@ export const getCarruselEntries = () => {
 					title: entry.fields.title,
 					subtitle: entry.fields.subtitle,
 					img: entry.fields.img.fields.file.url,
+					movil: entry.fields.movil.fields.file.url,
 					coleccion: entry.fields.boton
 				});
 			});

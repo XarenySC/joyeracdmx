@@ -28,6 +28,10 @@
 	display: flex;
 }
 
+.slide.selected{
+	display: flex
+}
+
 .carousel .control-arrow, .carousel.carousel-slider .control-arrow {
   -webkit-transition: all 0.25s ease-in;
   -moz-transition: all 0.25s ease-in;
