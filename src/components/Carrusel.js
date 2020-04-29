@@ -46,7 +46,7 @@ const styles = theme => ({
 		display: "flex",
 		flexGrow: 1,
 		[theme.breakpoints.down("sm")]:{
-			alignItems: "end"
+			alignItems: "flex-end"
 		},
 		justifyContent: "center",
 		alignItems: "center",
