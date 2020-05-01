@@ -323,7 +323,7 @@ export default function PrimarySearchAppBar() {
 			</MenuItem>
 			<MenuItem className={classes.menuItem} disableRipple>
 				<IconButton color="inherit" className={classes.menuItem} disableRipple>
-					<Link href="https://github.com/XarenySC/joyeracdmx" color="inherit">
+					<Link href="https://www.facebook.com/joyera.cdmx.1" color="inherit">
 						<Facebook />
 					</Link>
 				</IconButton>
@@ -331,7 +331,7 @@ export default function PrimarySearchAppBar() {
 			</MenuItem>
 			<MenuItem className={classes.menuItem} disableRipple>
 				<IconButton color="inherit" className={classes.menuItem} disableRipple>
-					<Link href="https://github.com/XarenySC/joyeracdmx" color="inherit">
+					<Link href="https://www.instagram.com/joyeracdmx/" color="inherit">
 						<Instagram />
 					</Link>
 				</IconButton>
@@ -434,7 +434,7 @@ export default function PrimarySearchAppBar() {
 							disableRipple
 						>
 							<Link
-								href="https://github.com/XarenySC/joyeracdmx"
+								href="https://www.facebook.com/joyera.cdmx.1"
 								color="inherit"
 							>
 								<Facebook />
@@ -446,7 +446,7 @@ export default function PrimarySearchAppBar() {
 							disableRipple
 						>
 							<Link
-								href="https://github.com/XarenySC/joyeracdmx"
+								href="https://www.instagram.com/joyeracdmx/"
 								color="inherit"
 							>
 								<Instagram />
