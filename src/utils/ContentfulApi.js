@@ -127,3 +127,15 @@ export const getCarruselEntries = () => {
 		}
 	);
 };
+
+export const getInstagramPost = () => {
+	return fetch(
+		"https://api.instagram.com/oembed/?url=https://www.instagram.com/p/B_ldrBkDj0v/"
+	)
+		.then(result => {
+			return result.json();
+		})
+		.catch(error => {
+			console.log(error);
+		});
+};

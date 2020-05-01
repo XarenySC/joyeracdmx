@@ -21,3 +21,11 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.instagram-media{
+	display: none !important;
+}
+
+.instagram-media.instagram-media-rendered{
+	display: block !important;
+}

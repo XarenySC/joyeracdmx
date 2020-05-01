@@ -1,7 +1,9 @@
 import React from "react";
 import Carrusel from "./Carrusel";
-import MasVendidos from  "./MasVendidos";
+import MasVendidos from "./MasVendidos";
 import { makeStyles } from "@material-ui/core/styles";
+import InstagramFeed from "./InstagramFeed";
+
 
 const useStyles = makeStyles(theme => ({
 	container: {
@@ -16,12 +18,14 @@ const useStyles = makeStyles(theme => ({
 	}
 }));
 
-export default function Home(){
+export default function Home() {
 	const classes = useStyles();
+
 	return (
 		<div className={classes.container}>
 			<Carrusel />
-			<MasVendidos/>
+			<MasVendidos />
+			<InstagramFeed/>
 		</div>
 	);
 }
