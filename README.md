@@ -1,3 +1,3 @@
 ## Joyeracdmx
 
-Proyecto para clase Iconos
+Proyecto de joyeria
